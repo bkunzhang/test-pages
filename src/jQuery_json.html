@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1:jQuery直接得到json; 2:跨域请求，执行回调</title>
+</head>
+<body>
+<h2>人员列表</h2>
+<div id="personList"></div>
+
+<script src="lib/jquery.js"></script>
+<script>
+    /*1:*/
+    $.getJSON('json/test.json', function (data) {
+        console.log('$.each#####')
+        $.each(data, function (i, item) {
+            console.log(item)
+            console.log(arguments)
+        });
+
+        console.log('forEach#####')
+        data.forEach(function (item) {
+            console.log(arguments)
+            $(document.createElement('div')).text(item.id).append($('<h4></h4>').text(item.name)).appendTo($('#personList'));
+        });
+    });
+
+    /*2:*/
+    $.getJSON();
+</script>
+</body>
+</html>
